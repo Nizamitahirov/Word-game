@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teamword</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Animated Background -->
+    <div id="background-animation">
+        <span class="bubble">🎮</span>
+        <span class="bubble">🏆</span>
+        <span class="bubble">⭐</span>
+        <span class="bubble">💡</span>
+        <span class="bubble">🎲</span>
+        <span class="bubble"> joystick </span>
+        <span class="bubble">🎯</span>
+        <span class="bubble">🚀</span>
+        <span class="bubble">🧩</span>
+        <span class="bubble">👑</span>
+    </div>
+
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen active">
+        <div class="start-container">
+            <h1>Teamword</h1>
+            <p>Enter player names to begin the challenge!</p>
+            <div class="player-inputs">
+                <input type="text" id="player1-name-input" placeholder="Player 1 Name">
+                <input type="text" id="player2-name-input" placeholder="Player 2 Name">
+            </div>
+            <button id="start-game-btn">Start Game</button>
+            <div class="footer-credit">
+                <p>Created by Nizami Tahir | Databyte Tech</p>
+                <p>All rights reserved</p>
+            </div>
+        </div>
+
+        <!-- Game History Section -->
+        <div id="history-container" class="history-container">
+            <h2>Game History</h2>
+            <div class="table-wrapper">
+                <table id="history-table">
+                    <thead>
+                        <tr>
+                            <th>Winner</th>
+                            <th>Winner's Score</th>
+                            <th>Loser</th>
+                            <th>Loser's Score</th>
+                            <th>Letter Combo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-table-body">
+                    </tbody>
+                </table>
+            </div>
+            <button id="export-excel-btn">Export to Excel</button>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+        <div class="game-header">
+            <div class="header-controls-left">
+                <button id="mute-btn" class="control-btn" title="Start/Stop Music">🔇</button>
+            </div>
+            <div class="game-info-center">
+                <div class="game-timer-container">
+                    <h3>Game Ends In</h3>
+                    <div id="game-timer">05:00</div>
+                </div>
+                <div class="letter-combo-container">
+                    <h3>Starts With:</h3>
+                    <div id="letter-combo">...</div>
+                </div>
+            </div>
+            <div class="header-controls-right">
+                <button id="force-end-btn" class="end-game-btn" title="End Game Immediately">End Game</button>
+            </div>
+        </div>
+        <div class="players-container">
+            <!-- Player 1 Panel -->
+            <div id="player1-panel" class="player-panel">
+                <div class="player-info">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=player1" alt="Avatar" class="avatar">
+                    <h2 id="player1-name">Player 1</h2>
+                </div>
+                <div class="turn-timer" id="player1-turn-timer">00:30</div>
+                <div class="input-area">
+                    <input type="text" id="player1-input" class="word-input" placeholder="Enter a word...">
+                    <button id="player1-apply-btn" class="apply-btn">Apply</button>
+                </div>
+                <div class="score-area">
+                    <p>Score: <span id="player1-score">0</span></p>
+                    <p>Total Time: <span id="player1-total-time">0s</span></p>
+                </div>
+                <div class="word-list-container">
+                    <h3>Found Words:</h3>
+                    <ul id="player1-word-list" class="word-list"></ul>
+                </div>
+            </div>
+
+            <!-- Player 2 Panel -->
+            <div id="player2-panel" class="player-panel inactive">
+                 <div class="player-info">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=player2" alt="Avatar" class="avatar">
+                    <h2 id="player2-name">Player 2</h2>
+                </div>
+                <div class="turn-timer" id="player2-turn-timer">00:30</div>
+                 <div class="input-area">
+                    <input type="text" id="player2-input" class="word-input" placeholder="Enter a word...">
+                    <button id="player2-apply-btn" class="apply-btn">Apply</button>
+                </div>
+                <div class="score-area">
+                    <p>Score: <span id="player2-score">0</span></p>
+                    <p>Total Time: <span id="player2-total-time">0s</span></p>
+                </div>
+                <div class="word-list-container">
+                    <h3>Found Words:</h3>
+                    <ul id="player2-word-list" class="word-list"></ul>
+                </div>
+            </div>
+        </div>
+        <div id="message-area" class="message-area"></div>
+    </div>
+
+    <!-- Winner Modal -->
+    <div id="winner-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="winner-title">Congratulations!</h2>
+            <img id="winner-avatar" src="https://api.dicebear.com/7.x/bottts/svg?seed=winner" alt="Winner Avatar" class="avatar-large">
+            <h3 id="winner-name">Player X Wins!</h3>
+            <p id="winner-stats">Score: 10, Total Time: 120s</p>
+            <button id="new-game-btn">Start New Game</button>
+        </div>
+    </div>
+
+    <!-- Background Music Player -->
+    <audio id="background-music"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
